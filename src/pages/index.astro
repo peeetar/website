@@ -1,0 +1,81 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+---
+
+
+<!DOCTYPE html>
+<html
+>
+  <Header title="Petar Velkovski" />
+  <body>
+    <div class="content">
+      <Sidebar selectedItem="home" />
+      <nav class="main">
+        <div class="container">
+          <main class="fold-content-container">
+            <div class="fold-content">
+              <h1>Hi, I'm Petar.<br />I like to do stuff using computers.</h1>
+              <p class="lead">
+                Computer Science student at Anatolia University. I enjoy system administration, 
+                homelabbing and learning new things day to day. Let's get in touch!
+              </p>
+            </div>
+            <a href="mailto:petar@velkovski.xyz" class="button w-button">Contact</a>
+          </main>
+          <div class="projects-section">
+            <!-- Software Development -->
+            <a class="projects-container">
+              <div class="single-projects-category">
+                <div class="projects-category-image-container">
+                  <img src="./assets/browser.svg" loading="lazy" alt="" class="projects-category-image" />
+                </div>
+              </div>
+              <div class="single-projects-content">
+                <h4>languages &amp; dev tools</h4>
+                <div class="tech-tools-container">
+                  <div class="mini-label-white gray-color">Technologies &amp; tools</div>
+                  <div class="chips-container chips-container-small-width">
+                    <div class="single-chip small-chip">Java</div>
+                    <div class="single-chip small-chip">C#</div>
+                    <div class="single-chip small-chip">.NET in Visual Studio</div>
+                    <div class="single-chip small-chip">Astro</div>
+                    <div class="single-chip small-chip">Python</div>
+                    <div class="single-chip small-chip">REST APIs</div>
+                    <div class="single-chip small-chip">YAML</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- DevOps & Cloud -->
+            <a class="projects-container">
+              <div class="single-projects-category">
+                <div class="projects-category-image-container devops-img">
+                  <img src="./assets/database.svg" loading="lazy" alt="" class="projects-category-image" />
+                </div>
+              </div>
+              <div class="single-projects-content">
+                <h4>devops & sysadmin</h4>
+                <div class="tech-tools-container">
+                  <div class="mini-label-white gray-color">Technologies &amp; tools</div>
+                  <div class="chips-container chips-container-small-width">
+                    <div class="single-chip small-chip">Bash</div>
+                    <div class="single-chip small-chip">Github CI/CD</div>
+                    <div class="single-chip small-chip">Docker</div>
+                    <div class="single-chip small-chip">Proxmox VE</div>
+                    <div class="single-chip small-chip">Astro</div>
+                    <div class="single-chip small-chip">Tailscale</div>
+                    <div class="single-chip small-chip">Wireguard</div>
+
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  </body>
+</html>
