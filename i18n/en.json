@@ -1,0 +1,131 @@
+{
+  "description": "Student and Homelab Enthusiast, studying Business Computing at Anatolia University",
+  "nav": {
+    "about": "about",
+    "projects": "projects",
+    "experience": "experience",
+    "contact": "contact"
+  },
+  "hero": {
+    "title": "CS and Business Student",
+    "p1": "at Anatolia University, passionate about web development, systems administration, and design.",
+    "p2": "I have experience in systems management and I have a strong interest for front-end development, as well as a strong background in graphic design and digital creativity.",
+    "p3": "I'm currently seeking full-time and part time opportunities in the Thessaloniki area, where I can apply my skills and grow as a developer."
+  },
+  "projects": {
+    "title": "Projects",
+    "item_1": {
+      "name": "oseth-api",
+      "description": "Locally hosted Flask scraper/API for OSETH telematics timetable service, exposing real-time bus arrival data as JSON endpoints for Home Assistant and other consumers.",
+      "link": "https://github.com/peeetar/oseth-api"
+    },
+    "item_2": {
+      "name": "Proxmox Homelab",
+      "description": "A self-hosted homelab environment running Proxmox VE, with multiple VMs and containers for testing and development. Includes varied services such as web servers, game servers and locally ran LLMs.",
+      "link": ""
+    }
+  },
+  "languages": {
+    "title": "Languages",
+    "item_1": {
+      "name": "English",
+      "description": "C2 - Native-like proficiency"
+    },
+    "item_2": {
+      "name": "Macedonian",
+      "description": "C2 - Native, mother tounge"
+    },
+    "item_3": {
+      "name": "German",
+      "description": "B1 - Intermediate proficiency"
+    },
+    "item_4": {
+      "name": "Greek",
+      "description": "A2 - Basic proficiency"
+    },
+    "item_5": {
+      "name": "Serbian",
+      "description": "B1 - Intermediate proficiency"
+    },
+    "item_6": {
+      "name": "Interslavic",
+       "description": "A2 - Basic understanding"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "item_1": {
+      "period": "Jun 2023 — Aug 2024",
+      "role": "Student and Junior Graphic Designer",
+      "company": "Brainster & Freelance",
+      "description": "Studied 20+ design briefs, conceptualized visuals for 10+ projects, and delivered brand identity solutions and winning designs in fast-paced hackathon and volunteer settings."
+    },
+    "item_2": {
+      "period": "Jun 2025 —  Sep 2025",
+      "role": "Bartender & Waiter",
+      "company": "Dolap Cafe & Makka Bar",
+      "description": "Managed POS operations, handled cash and card transactions, and developed strong time management and customer service skills in a high-pressure environment."
+    },
+    "item_3": {
+      "period": "Sep 2025 — Expected 2028",
+      "role": "Student Clubs & Leadership",
+      "company": "ACT | Student Organizations",
+      "description": "Leader and co-leader of multiple clubs, and Sophomore SGA Representative, organizing events and representing student interests."
+    }
+
+  },
+  "skills": {
+    "heading": "Skills",
+    "react": {
+      "title": "Linux, Bash and related tools",
+      "category": "Tech",
+      "description": "Dualbooting and homelab environment for systems administration and experimentation.",
+      "experience_years": "2",
+      "experience_label": "years of experience"
+    },
+    "typescript": {
+      "title": "Adobe Creative Cloud",
+      "category": "Design",
+      "description": "Graphic design and photography workflows using Photoshop, Illustrator, and related tools.",
+      "experience_years": "2",
+      "experience_label": "years of experience"
+    },
+    "astro": {
+      "title": "Java",
+      "category": "Language",
+      "description": "Object-oriented programming through academic projects.",
+      "experience_years": "1",
+      "experience_label": "year of experience"
+    },
+    "tailwind": {
+      "title": ".NET (C#)",
+      "category": "Language",
+      "description": "Introduction to .NET and C# through coursework and personal learning.",
+      "experience_years": "1",
+      "experience_label": "year of experience"
+    },
+    "nodejs": {
+      "title": "Systems Administration",
+      "category": "Tech",
+      "description": "Amateur systems administration and homelab virtualization with Proxmox and related tools.",
+      "experience_years": "2",
+      "experience_label": "years of experience"
+    },
+    "kali_linux": {
+      "title": "Communication & Collaboration",
+      "category": "Soft",
+      "description": "Excellent communicator, working under pressure, problem solving, and digital collaboration with Slack and Google Workspace.",
+      "experience_years": "3+",
+      "experience_label": "years of experience"
+    }
+  },
+  "contact": {
+    "status": "Available for full-time positions in the Thessaloniki area.",
+    "email_label": "Email",
+    "email_url": "mailto:petar@velkovski.xyz",
+    "github_label": "GitHub",
+    "github_url": "https://github.com/peeetar",
+    "linkedin_label": "LinkedIn",
+    "linkedin_url": "https://www.linkedin.com/in/velkovskipetar/"
+  }
+}

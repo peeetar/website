@@ -1,0 +1,325 @@
+---
+export const getStaticPaths = () => {
+  return [
+    { params: { lang: "en" } },
+  ];
+};
+
+import Layout from "@/src/layouts/Layout.astro";
+import { useI18n } from "@ariaskit/astro-i18n";
+import { type LocaleSchema } from "@/src/types";
+import Header from "@/src/components/Header.astro";
+import Hero from "@/src/components/Hero.astro";
+import Projects from "@/src/components/Projects.astro";
+import Experience from "@/src/components/Experience.astro";
+import Footer from "@/src/components/Footer.astro";
+import Skills from "@/src/components/Skills.astro";
+import I18NDebug from "@ariaskit/astro-i18n/I18NDebug.astro";
+
+const { t, locale } = useI18n<LocaleSchema>({
+  ssg: {
+    astro: Astro,
+  },
+});
+
+const safeT = (key: string) => {
+  try {
+    return t(key);
+  } catch (e) {
+    console.error("i18n: translation error for key:", key, e);
+    return "";
+  }
+};
+
+const nav = [
+  { path: `/`, text: safeT("nav.about") },
+  { path: `#${safeT("nav.experience")}`, text: safeT("nav.experience") },
+  { path: `#${safeT("nav.projects")}`, text: safeT("nav.projects") },
+  { path: `#${safeT("nav.contact")}`, text: safeT("nav.contact") },
+];
+
+const heroProps = {
+  name: "Petar Velkovski",
+  title: { key: "hero.title", value: safeT("hero.title") },
+  p1: { key: "hero.p1", value: safeT("hero.p1") },
+  p2: { key: "hero.p2", value: safeT("hero.p2") },
+  p3: { key: "hero.p3", value: safeT("hero.p3") },
+};
+
+const _rawLanguages = [
+  {
+    nameKey: "languages.item_1.name",
+    descriptionKey: "languages.item_1.description",
+    name: safeT("languages.item_1.name"),
+    description: safeT("languages.item_1.description"),
+  },
+  {
+    nameKey: "languages.item_2.name",
+    descriptionKey: "languages.item_2.description",
+    name: safeT("languages.item_2.name"),
+    description: safeT("languages.item_2.description"),
+  },
+  {
+    nameKey: "languages.item_3.name",
+    descriptionKey: "languages.item_3.description",
+    name: safeT("languages.item_3.name"),
+    description: safeT("languages.item_3.description"),
+  },
+  {
+    nameKey: "languages.item_4.name",
+    descriptionKey: "languages.item_4.description",
+    name: safeT("languages.item_4.name"),
+    description: safeT("languages.item_4.description"),
+  },
+  {
+    nameKey: "languages.item_5.name",
+    descriptionKey: "languages.item_5.description",
+    name: safeT("languages.item_5.name"),
+    description: safeT("languages.item_5.description"),
+  },
+  {
+    nameKey: "languages.item_6.name",
+    descriptionKey: "languages.item_6.description",
+    name: safeT("languages.item_6.name"),
+    description: safeT("languages.item_6.description"),
+  },
+];
+
+const languages = _rawLanguages.filter((p) => {
+  return [p.name, p.description].some((v) => typeof v === 'string' && v.trim() !== '');
+});
+
+const languagesProps = {
+  title: { key: "languages.title", value: safeT("languages.title") },
+  projects: languages,
+};
+
+const _rawProjects = [
+  {
+    nameKey: "projects.item_1.name",
+    descriptionKey: "projects.item_1.description",
+    name: safeT("projects.item_1.name"),
+    description: safeT("projects.item_1.description"),
+    link: safeT("projects.item_1.link"),
+  },
+  {
+    nameKey: "projects.item_2.name",
+    descriptionKey: "projects.item_2.description",
+    name: safeT("projects.item_2.name"),
+    description: safeT("projects.item_2.description"),
+    link: safeT("projects.item_2.link"),
+  },
+  {
+    nameKey: "projects.item_3.name",
+    descriptionKey: "projects.item_3.description",
+    name: safeT("projects.item_3.name"),
+    description: safeT("projects.item_3.description"),
+    link: safeT("projects.item_3.link"),
+  },
+  {
+    nameKey: "projects.item_4.name",
+    descriptionKey: "projects.item_4.description",
+    name: safeT("projects.item_4.name"),
+    description: safeT("projects.item_4.description"),
+    link: safeT("projects.item_4.link"),
+  },
+  {
+    nameKey: "projects.item_5.name",
+    descriptionKey: "projects.item_5.description",
+    name: safeT("projects.item_5.name"),
+    description: safeT("projects.item_5.description"),
+    link: safeT("projects.item_5.link"),
+  },
+  {
+    nameKey: "projects.item_6.name",
+    descriptionKey: "projects.item_6.description",
+    name: safeT("projects.item_6.name"),
+    description: safeT("projects.item_6.description"),
+    link: safeT("projects.item_6.link"),
+  },
+  {
+    nameKey: "projects.item_7.name",
+    descriptionKey: "projects.item_7.description",
+    name: safeT("projects.item_7.name"),
+    description: safeT("projects.item_7.description"),
+    link: safeT("projects.item_7.link"),
+  },
+  {
+    nameKey: "projects.item_8.name",
+    descriptionKey: "projects.item_8.description",
+    name: safeT("projects.item_8.name"),
+    description: safeT("projects.item_8.description"),
+    link: safeT("projects.item_8.link"),
+  },
+];
+
+const projects = _rawProjects.filter((p) => {
+  return [p.name, p.description, p.link].some((v) => typeof v === 'string' && v.trim() !== '');
+});
+
+const projectsProps = {
+  title: { key: "projects.title", value: safeT("projects.title") },
+  projects,
+};
+
+const _rawExperienceJobs = [
+  {
+    period: { key: "experience.item_1.period", value: safeT("experience.item_1.period") },
+    role: { key: "experience.item_1.role", value: safeT("experience.item_1.role") },
+    company: { key: "experience.item_1.company", value: safeT("experience.item_1.company") },
+    description: { key: "experience.item_1.description", value: safeT("experience.item_1.description") },
+  },
+  {
+    period: { key: "experience.item_2.period", value: safeT("experience.item_2.period") },
+    role: { key: "experience.item_2.role", value: safeT("experience.item_2.role") },
+    company: { key: "experience.item_2.company", value: safeT("experience.item_2.company") },
+    description: { key: "experience.item_2.description", value: safeT("experience.item_2.description") },
+  },
+  {
+    period: { key: "experience.item_3.period", value: safeT("experience.item_3.period") },
+    role: { key: "experience.item_3.role", value: safeT("experience.item_3.role") },
+    company: { key: "experience.item_3.company", value: safeT("experience.item_3.company") },
+    description: { key: "experience.item_3.description", value: safeT("experience.item_3.description") },
+  },
+  {
+    period: { key: "experience.item_4.period", value: safeT("experience.item_4.period") },
+    role: { key: "experience.item_4.role", value: safeT("experience.item_4.role") },
+    company: { key: "experience.item_4.company", value: safeT("experience.item_4.company") },
+    description: { key: "experience.item_4.description", value: safeT("experience.item_4.description") },
+  },
+];
+
+const jobs = _rawExperienceJobs.filter((job) => {
+  const vals = [job.period?.value, job.role?.value, job.company?.value, job.description?.value];
+  return vals.some((v) => typeof v === "string" && v.trim() !== "");
+});
+
+const experienceData = {
+  title: { key: "experience.title", value: safeT("experience.title") },
+  jobs,
+};
+
+const alternate = [
+  { href: "/en", hreflang: "en" },
+];
+
+const footerContent = {
+  id: safeT("nav.contact").toLowerCase(),
+  status: {
+    key: "contact.status",
+    value: safeT("contact.status"),
+  },
+  email_label: {
+    key: "contact.email_label",
+    value: safeT("contact.email_label"),
+  },
+  email_url: {
+    key: "contact.email_url",
+    value: safeT("contact.email_url"),
+  },
+  github_label: {
+    key: "contact.github_label",
+    value: safeT("contact.github_label"),
+  },
+  github_url: {
+    key: "contact.github_url",
+    value: safeT("contact.github_url"),
+  },
+  linkedin_label: {
+    key: "contact.linkedin_label",
+    value: safeT("contact.linkedin_label"),
+  },
+  linkedin_url: {
+    key: "contact.linkedin_url",
+    value: safeT("contact.linkedin_url"),
+  },
+};
+
+const skills = [
+  {
+    title: { key: "skills.react.title", value: safeT("skills.react.title") },
+      category: { key: "skills.react.category", value: safeT("skills.react.category") },
+      description: { key: "skills.react.description", value: safeT("skills.react.description") },
+      experience_years: { key: "skills.react.experience_years", value: safeT("skills.react.experience_years") },
+      experience_label: { key: "skills.react.experience_label", value: safeT("skills.react.experience_label") },
+  },
+  {
+    title: { key: "skills.typescript.title", value: safeT("skills.typescript.title") },
+    category: { key: "skills.typescript.category", value: safeT("skills.typescript.category") },
+    description: { key: "skills.typescript.description", value: safeT("skills.typescript.description") },
+    experience_years: { key: "skills.typescript.experience_years", value: safeT("skills.typescript.experience_years") },
+    experience_label: { key: "skills.typescript.experience_label", value: safeT("skills.typescript.experience_label") },
+  },
+  {
+    title: { key: "skills.astro.title", value: safeT("skills.astro.title") },
+    category: { key: "skills.astro.category", value: safeT("skills.astro.category") },
+    description: { key: "skills.astro.description", value: safeT("skills.astro.description") },
+    experience_years: { key: "skills.astro.experience_years", value: safeT("skills.astro.experience_years") },
+    experience_label: { key: "skills.astro.experience_label", value: safeT("skills.astro.experience_label") },
+  },
+  {
+    title: { key: "skills.tailwind.title", value: safeT("skills.tailwind.title") },
+    category: { key: "skills.tailwind.category", value: safeT("skills.tailwind.category") },
+    description: { key: "skills.tailwind.description", value: safeT("skills.tailwind.description") },
+    experience_years: { key: "skills.tailwind.experience_years", value: safeT("skills.tailwind.experience_years") },
+    experience_label: { key: "skills.tailwind.experience_label", value: safeT("skills.tailwind.experience_label") },
+  },
+  {
+    title: { key: "skills.nodejs.title", value: safeT("skills.nodejs.title") },
+    category: { key: "skills.nodejs.category", value: safeT("skills.nodejs.category") },
+    description: { key: "skills.nodejs.description", value: safeT("skills.nodejs.description") },
+    experience_years: { key: "skills.nodejs.experience_years", value: safeT("skills.nodejs.experience_years") },
+    experience_label: { key: "skills.nodejs.experience_label", value: safeT("skills.nodejs.experience_label") },
+  },
+  {
+    title: { key: "skills.kali_linux.title", value: safeT("skills.kali_linux.title") },
+    category: { key: "skills.kali_linux.category", value: safeT("skills.kali_linux.category") },
+    description: { key: "skills.kali_linux.description", value: safeT("skills.kali_linux.description") },
+    experience_years: { key: "skills.kali_linux.experience_years", value: safeT("skills.kali_linux.experience_years") },
+    experience_label: { key: "skills.kali_linux.experience_label", value: safeT("skills.kali_linux.experience_label") },
+  }
+];
+
+---
+
+<Layout
+  locale={locale}
+  title="Petar Velkovski"
+  description={safeT("description")}
+  alternateLinks={alternate}
+>
+  <Header nav={nav} locales={["en"]} currentLocale={locale} />
+
+  <main>
+    <Hero {...heroProps} />
+    <section id={languagesProps.title.value.toLowerCase()} class="scroll-mt-50 mt-10">
+      <I18NDebug key={languagesProps.title.key}>
+        <h2 class="opacity-50 uppercase mb-6">{languagesProps.title.value}</h2>
+      </I18NDebug>
+      <table class="w-full text-left">
+        <tbody>
+          {languages.reduce((rows, lang, idx) => {
+            if (idx % 2 === 0) rows.push([lang]);
+            else rows[rows.length - 1].push(lang);
+            return rows;
+          }, []).map((pair) => (
+            <tr>
+              {pair.map((item) => (
+                <td class="py-2 pr-4">
+                  <strong>{item.name}</strong><br />
+                  <span class="opacity-50 text-[0.88rem]">{item.description}</span>
+                </td>
+              ))}
+              {pair.length === 1 ? <td /> : null}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+    <Projects {...projectsProps} />
+    <Experience {...experienceData} />
+    <Skills heading={{key: "skills.heading", value: safeT("skills.heading")}} content={skills} />
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>

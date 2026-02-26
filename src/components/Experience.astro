@@ -1,0 +1,62 @@
+---
+import I18NDebug from "@ariaskit/astro-i18n/I18NDebug.astro";
+
+type Out = { key: string; value: string };
+
+interface JobExp {
+    period: Out;
+    role: Out;
+    company: Out;
+    description: Out;
+}
+
+interface Props {
+    title: Out;
+    jobs: JobExp[];
+}
+
+const { title, jobs } = Astro.props as Props;
+---
+
+<section id={title.value.toLowerCase()} class="scroll-mt-50">
+    <h2 class="opacity-50 uppercase mb-6 mt-15">
+        <I18NDebug key={title.key}>
+            {title.value}
+        </I18NDebug>
+    </h2>
+    {
+            jobs && jobs.length > 0 ? jobs.map((job) => {
+                const periodVal = job?.period?.value ?? "";
+                const roleVal = job?.role?.value ?? "";
+                const companyVal = job?.company?.value ?? "";
+                const descVal = job?.description?.value ?? "";
+
+                const renderI18nOrPlain = (out: Out | undefined, tag: 'span' | 'p' = 'span') => {
+                    if (out && out.key) {
+                        if (tag === 'p') return (<I18NDebug key={out.key}><p class="text-[0.87rem] opacity-50">{out.value}</p></I18NDebug>);
+                        return (<I18NDebug key={out.key}><span>{out.value}</span></I18NDebug>);
+                    }
+                    if (tag === 'p') return (<p class="text-[0.87rem] opacity-50">{out?.value ?? ''}</p>);
+                    return (<span>{out?.value ?? ''}</span>);
+                };
+
+                return (
+                    <ul>
+                        <li class="mb-4 grid grid-cols-1 md:grid-cols-10">
+                            <span class="opacity-50 text-[0.87rem] col-span-2">
+                                { renderI18nOrPlain(job?.period) }
+                            </span>
+                            <div class="col-span-8">
+                                <div>
+                                    { renderI18nOrPlain(job?.role) }
+                                    <span class="opacity-50">|</span>
+                                    { renderI18nOrPlain(job?.company) }
+                                </div>
+                                { (job?.description && (job.description.value || job.description.key)) ? renderI18nOrPlain(job?.description, 'p') : <p class="text-[0.87rem] opacity-50">{descVal}</p> }
+                            </div>
+                        </li>
+                    </ul>
+                );
+            }) : null
+    }
+</section>
