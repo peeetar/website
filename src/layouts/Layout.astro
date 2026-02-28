@@ -1,6 +1,7 @@
 ---
 import { PageMetadata } from "@/src/components/hybrid-astro-ui/page-metadata";
 import OGImage from "@/src/assets/background.png"
+import EmployerModal from "@/src/components/EmployerModal.astro";
 
 interface Props {
 	title: string;
@@ -29,5 +30,7 @@ const { title, description, locale, alternateLinks } =
 	</head>
 	<body class="*:max-w-2xl *:w-full flex flex-col  items-center w-full font-mono px-5 md:px-0 leading-7" >
 		<slot />
+		<!-- Employer modal injected here so it is not nested inside transformed elements -->
+		<EmployerModal />
 	</body>
 </html>

@@ -29,7 +29,10 @@ const { nav, locales, currentLocale } = Astro.props as Props
             ))
         }
     </div>
-    <div class="order-1 md:order-2 mb-4 md:mb-0 space-x-2 md:space-x-0" >
+    <div class="order-1 md:order-2 mb-4 md:mb-0 space-x-2 md:space-x-0 flex items-center gap-3" >
+        <a href="#" onclick="event.preventDefault(); window.showEmployerModal && window.showEmployerModal()" class="text-[1rem] md:text-[0.85rem] border border-green-500 text-green-500 px-3 py-1 rounded hover:bg-green-50" style="text-decoration: none;">
+            for employers
+        </a>
         {
             locales.map(item =>
                 <a href={`/${item.toLowerCase()}`} class={cls("uppercase text-[1.2rem] md:text-[0.9rem] hover:opacity-100 cursor-pointer opacity-70 transition-all duration-200", item === currentLocale.toLowerCase() && "opacity-100")}>
